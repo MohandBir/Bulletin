@@ -6,7 +6,7 @@
 
 <ul>
     <?php foreach ($users as $user) { ?>
-    <li><?= htmlspecialchars($user->getFirstname()) . htmlspecialchars($user->getLastname()) ?> <a href="">ℹ️</a></li>
+    <li><?= htmlspecialchars($user->getFirstname()) .' '. htmlspecialchars($user->getLastname()) ?> <a href="?route=show&id=<?= $user->getId() ?>">ℹ️</a></li>
     <?php } ?>
 </ul>
 

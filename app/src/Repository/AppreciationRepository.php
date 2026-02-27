@@ -2,7 +2,7 @@
 
 namespace Notes\App\Repository;
 
-class AppreciationRepository 
+class AppreciationRepository extends Repository
 {
     
 }

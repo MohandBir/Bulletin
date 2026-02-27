@@ -1,0 +1,20 @@
+<?php $title = ' Afficher les Notes' ?>
+
+<?php ob_start() ?>
+
+<h1><?= htmlspecialchars($user->getFirstname()) .' '. htmlspecialchars($user->getLastname()) ?> </h1>
+
+<ul>
+    <?php foreach ($notes as $note) { ?>
+    <li><?= htmlspecialchars($note->getSubject()) .' : '. htmlspecialchars($note->getResult())  ?></li>
+    <?php } ?>
+</ul>
+
+<p><a href="">Remplir le bulletin</a></p>
+<p><a href="">Retour à la classe</a></p>
+
+<?php $content = ob_get_clean() ?>
+
+<?php 
+require('base.phtml'); 
+?>

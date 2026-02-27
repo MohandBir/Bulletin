@@ -14,6 +14,8 @@ $bulletinController = new BulletinController;
 
 if ($route === 'index') {
     $bulletinController->index();
-} else {
-    echo '404 Page n\'est pas trouvée';
+} elseif($route === 'show') {
+    $bulletinController->show();
+} else{
+echo '404 Page n\'est pas trouvée';
 }
