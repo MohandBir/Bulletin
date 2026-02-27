@@ -1,0 +1,14 @@
+{
+    "name": "contact/app",
+    "autoload": {
+        "psr-4": {
+            "Notes\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Camile"
+        }
+    ],
+    "require": {}
+}
