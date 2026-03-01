@@ -16,6 +16,8 @@ if ($route === 'index') {
     $bulletinController->index();
 } elseif($route === 'show') {
     $bulletinController->show();
+} elseif($route === 'add') {
+    $bulletinController->add();
 } else{
 echo '404 Page n\'est pas trouvée';
 }

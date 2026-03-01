@@ -16,6 +16,8 @@ class UserRepository extends Repository
         
         return $users;
     }
+
+
     public function findOne($id)
     {
         $sql = "SELECT * FROM user WHERE id=:id";

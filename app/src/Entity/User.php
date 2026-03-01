@@ -9,7 +9,8 @@ class User
     private $firstname;
     private $lastname;
     private $date_of_birth;
-    
+    //private $notes = [] ;
+
     
     
 
@@ -92,4 +93,6 @@ class User
 
         return $this;
     }
+
+
 }

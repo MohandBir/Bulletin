@@ -10,8 +10,19 @@
     <?php } ?>
 </ul>
 
-<p><a href="">Remplir le bulletin</a></p>
-<p><a href="">Retour à la classe</a></p>
+<?php if(($appreciation)) { ?>   
+    <fieldset>
+        <legend>Commentaire</legend>
+        <p><?= htmlspecialchars(ucfirst($appreciation->getComment())) ?></p>
+        <h3><?= htmlspecialchars(ucfirst($appreciation->getMention())) ?></h3>
+        <p><a href="">✏️</a> <a href="">❌</a></p>
+        
+    </fieldset>
+
+<?php } ?>
+
+<p><a href="?route=add&id=<?= $user->getId() ?>">Remplir le bulletin</a></p>
+<p><a href="?route=index">Retour à la classe</a></p>
 
 <?php $content = ob_get_clean() ?>
 
