@@ -43,7 +43,7 @@ class BulletinController {
             $appreciation->setComment($_POST['comment'])
             ->setMention($_POST['mention'])
             ->setId_user($idUser);
-            
+   
             $appreciatRepo = new AppreciationRepository;
             $appreciatRepo->addAppreciation($appreciation);
 
@@ -51,6 +51,16 @@ class BulletinController {
             exit;
         }
         require('src/view/add.phtml');
+    }
+
+    public function delete()
+    {
+        $idUser = ((int)$_GET['id']) ?? null;
+
+        $apprRepo = new AppreciationRepository;
+        $apprRepo->delete($idUser);
+
+        header("location: index.php?route=show&id=$idUser");
     }
 
 }

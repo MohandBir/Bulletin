@@ -14,14 +14,14 @@
     <fieldset>
         <legend>Commentaire</legend>
         <p><?= htmlspecialchars(ucfirst($appreciation->getComment())) ?></p>
-        <h3><?= htmlspecialchars(ucfirst($appreciation->getMention())) ?></h3>
-        <p><a href="">✏️</a> <a href="">❌</a></p>
+        <h3><?= htmlspecialchars($appreciation->getMention()) ?></h3>
+        <p><a href="">✏️</a> <a href="?route=delete&id=<?= $user->getId() ?>">❌</a></p>
         
     </fieldset>
-
+<?php } else {?>
+    <p><a href="?route=add&id=<?= $user->getId() ?>">Remplir le bulletin</a></p>
 <?php } ?>
 
-<p><a href="?route=add&id=<?= $user->getId() ?>">Remplir le bulletin</a></p>
 <p><a href="?route=index">Retour à la classe</a></p>
 
 <?php $content = ob_get_clean() ?>

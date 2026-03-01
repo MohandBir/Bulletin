@@ -18,6 +18,8 @@ if ($route === 'index') {
     $bulletinController->show();
 } elseif($route === 'add') {
     $bulletinController->add();
+} elseif($route === 'delete') {
+    $bulletinController->delete();
 } else{
 echo '404 Page n\'est pas trouvée';
 }
