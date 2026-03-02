@@ -29,7 +29,7 @@ class BulletinController {
         $notes = $noteRepo->getNotesById($id);
 
         $apprRepo = new AppreciationRepository;
-        $appreciation = $apprRepo->getAppreciation($id);
+        $appreciation = $apprRepo->getAppreciationByUserId($id);
 
         require('src/view/show.phtml');       
     }
@@ -62,5 +62,31 @@ class BulletinController {
 
         header("location: index.php?route=show&id=$idUser");
     }
+
+    public function update()
+    {
+
+    
+        if (!empty($_POST)){
+            $appreciation = new Appreciation; 
+            $appreciation->setComment($_POST['comment'])
+            ->setMention($_POST['mention'])
+            ->setId_user($_POST['idUser'])
+            ;
+   
+            $appreciatRepo = new AppreciationRepository;
+            $appreciatRepo->updateAppreciation($appreciation);
+            
+            header("location: index.php?route=show&id=".$appreciation->getId_user());
+            exit;
+        }
+
+        $id = ((int)$_GET['id']) ?? null;
+        $apprRepo = new AppreciationRepository;
+        $appreciation = $apprRepo->getAppreciationById($id);
+        require('src/view/update.phtml');
+
+    }
+   
 
 }

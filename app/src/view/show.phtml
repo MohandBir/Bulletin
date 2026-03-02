@@ -15,7 +15,7 @@
         <legend>Commentaire</legend>
         <p><?= htmlspecialchars(ucfirst($appreciation->getComment())) ?></p>
         <h3><?= htmlspecialchars($appreciation->getMention()) ?></h3>
-        <p><a href="">✏️</a> <a href="?route=delete&id=<?= $user->getId() ?>">❌</a></p>
+        <p><a href="?route=update&id=<?= $appreciation->getId() ?>">✏️</a> <a href="?route=delete&id=<?= $user->getId() ?>">❌</a></p>
         
     </fieldset>
 <?php } else {?>
