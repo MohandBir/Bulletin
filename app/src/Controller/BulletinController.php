@@ -29,7 +29,7 @@ class BulletinController {
         $notes = $noteRepo->getNotesById($id);
 
         $apprRepo = new AppreciationRepository;
-        $appreciation = $apprRepo->getAppreciation($id);
+        $appreciation = $apprRepo->getAppreciationByUserId($id);
 
         require('src/view/show.phtml');       
     }
@@ -62,5 +62,55 @@ class BulletinController {
 
         header("location: index.php?route=show&id=$idUser");
     }
+
+    // public function update()
+    // {
+    //     $id = ((int)$_GET['id']) ?? null;
+    //     $apprRepo = new AppreciationRepository;
+    //     $appreciation = $apprRepo->getAppreciationById($id);
+        
+    //     require('src/view/update.phtml');
+
+    //     $idUser = $appreciation->getId_user();
+    //     if (!empty($_POST)){
+    //         $appreciation = new Appreciation; 
+    //         $appreciation->setComment($_POST['comment'])
+    //         ->setMention($_POST['mention'])
+    //         ->setId_user($idUser);
+   
+    //         $appreciatRepo = new AppreciationRepository;
+    //         $appreciatRepo->updateAppreciation($appreciation);
+
+    //         header("location: index.php?route=show&id=$idUser");
+    //         exit;
+    //     }
+       
+    // }
+    public function update()
+    {
+        if (isset($_GET['id'])) {
+            $id = ((int)$_GET['id']) ?? null;
+            $apprRepo = new AppreciationRepository;
+            $appreciation = $apprRepo->getAppreciationById($id);
+            $idUser = $appreciation->getId_user();
+           
+        }
+        $id = ((int)$_GET['id']) ?? null;
+        if (!empty($_POST)){
+            $appreciation = new Appreciation; 
+            $appreciation->setComment($_POST['comment'])
+            ->setMention($_POST['mention'])
+            ->setId_user($idUser);
+   
+            $appreciatRepo = new AppreciationRepository;
+            $appreciatRepo->updateAppreciation($appreciation);
+
+            header("location: index.php?route=show&id=$idUser");
+            exit;
+        }
+         require('src/view/update.phtml');
+       
+    }
+
 
 }
