@@ -4,24 +4,25 @@
 
 <h1> Modifier le bulletin</h1>
 
-<form action="" method="post">
+<form action="?route=update" method="post">
 
     <label for="comment">Commentaire :</label><br>
     <textarea name="comment" cols="45" rows="6"  required><?= htmlspecialchars(ucfirst($appreciation->getComment())) ?></textarea>
     <div>
         <p>Mention :</p>
-        <label for="mention">Avertissement</label>
         <input type="radio" name="mention" value="Avertissement" <?= ($appreciation->getMention() === 'Avertissement') ? 'checked':'' ?>>
-        <label for="mention">Encouragements</label>
+        <label for="mention">Avertissement</label>
         <input type="radio" name="mention" value="Encouragements" <?= ($appreciation->getMention() === 'Encouragements') ? 'checked':'' ?>>
-        <label for="mention">Félicitations</label>
+        <label for="mention">Encouragements</label>
         <input type="radio" name="mention" value="Félicitations" <?= ($appreciation->getMention() === 'Félicitations') ? 'checked':'' ?>>
+        <label for="mention">Félicitations</label>    
     </div>
+    <input type="hidden" name="idUser" value="<?= $appreciation->getId_user() ?>">
     <p><input type="submit" value="Enregistrer"></p>
 </form>
 
 
-<p><a href="?route=show&id=<?= $_GET['id'] ?>">Retour à l'élève</a></p>
+<p><a href="?route=show&id=<?= $appreciation->getId_user() ?>">Retour à l'élève</a></p>
 
 <?php $content = ob_get_clean() ?>
 
